@@ -19,6 +19,7 @@ echo "Below, you may find your to-do items <br /><br />";
   <table>
       <?php foreach($result as $res):?>
     <tr>
+      <td><a href="details.php"><?php echo $res['todo_item'] ?></a></td>
         <td><?php echo $res['todo_item']. '<br />'; ?></td>
       <td>
         <form action="index.php" method="post">

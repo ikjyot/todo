@@ -42,5 +42,12 @@ if($action == "show_login_page")
   }
   $result = getTodoItems($_COOKIE['my_id']);
   include ('list.php');
+} else if($action == 'delete'){
+  if(isset($_POST['item_id'])) {
+    $selected = $_POST['item_id'];
+    deleteTodoItem($_COOKIE['my_id']);
+  }
+  $result = getTodoItems($_COOKIE['my_id']);
+  include ('list.php');
 }
 ?>

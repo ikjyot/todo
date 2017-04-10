@@ -29,5 +29,10 @@ echo "Below, you may find your to-do items <br /><br />";
       </form>
     </tr>
   </table>
+<form method="post" action="index.php">
+  <strong>Description: </strong> <input type="text" name="description"><br />
+  <input type="hidden" name="action" value="add">
+  <input type="submit" value="Add">
+</form>
 </body>
 </html>

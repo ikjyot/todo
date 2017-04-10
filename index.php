@@ -36,5 +36,11 @@ if($action == "show_login_page")
     }
 
   }
+} else if ($action == 'add') {
+  if (isset($_POST['description']) and $_POST['description'] != '') {
+    addTodoItem($_COOKIE['my_id'], $_POST['description']);
+  }
+  $result = getTodoItems($_COOKIE['my_id']);
+  include ('list.php');
 }
 ?>

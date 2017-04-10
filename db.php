@@ -2,10 +2,10 @@
 
 function addTodoItem($user_id, $todo_text) {
   global $db;
-  $query = "INSERT INTO todos(user_id, todo_item) values (:userid, :todotext)";
+  $query = "INSERT INTO todos(user_id, todo_item) values (:userid, :todo_text)";
   $statement = $db->prepare($query);
   $statement->bindValue(':userid', $user_id);
-  $statement->bindValue(':todotext', $todo_text);
+  $statement->bindValue(':todo_text', $todo_text);
   $statement->execute();
   $statement->closeCursor();
   return true;

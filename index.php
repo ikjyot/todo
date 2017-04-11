@@ -10,7 +10,9 @@ if($action == NULL)
 if($action == "show_login_page")
 {
   include('login.php');
-}else if($action == 'test_user')
+}
+
+else if($action == 'test_user')
 {
   $username = $_POST['reg_username'];
   $password = $_POST['reg_password'];
@@ -22,7 +24,9 @@ if($action == "show_login_page")
   }else{
     header("Location: badInfo.php");
   }
-}else if ($action=='registrar') {
+}
+
+else if ($action=='registrar') {
   //echo "We want create a new account";
   $name = filter_input(INPUT_POST, 'reg_username');
   if(isset($name)) {
@@ -36,13 +40,17 @@ if($action == "show_login_page")
     }
 
   }
-} else if ($action == 'add') {
+}
+
+else if ($action == 'add') {
   if (isset($_POST['description']) and $_POST['description'] != '') {
     addTodoItem($_COOKIE['my_id'], $_POST['description']);
   }
   $result = getTodoItems($_COOKIE['my_id']);
   include ('list.php');
-} else if($action == 'delete'){
+}
+
+else if($action == 'delete'){
   if(isset($_POST['item_id'])) {
     $selected = $_POST['item_id'];
     deleteTodoItem($_COOKIE['my_id'], $selected);

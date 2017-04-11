@@ -5,7 +5,7 @@ function deleteTodoItem($user_id, $todo_id) {
   $query = 'DELETE FROM todos WHERE id = :todo_id and user_id = :user_id';
   $statement = $db->prepare($query);
   $statement->bindValue(':user_id', $user_id);
-  $statement->bindValue(':todo_text', $todo_id);
+  $statement->bindValue(':todo_id', $todo_id);
   $statement->execute();
   $statement->closeCursor();
 }

@@ -20,7 +20,6 @@ echo "Below, you may find your to-do items <br /><br />";
       <?php foreach($result as $res):?>
     <tr>
       <td><a href="details.php"><?php echo $res['todo_item'] ?></a></td>
-        <td><?php echo $res['todo_item']. '<br />'; ?></td>
       <td>
         <form action="index.php" method="post">
           <input type="hidden" name="'item_id" value="<?php echo $res['id'] ?>">
@@ -30,17 +29,12 @@ echo "Below, you may find your to-do items <br /><br />";
       </td>
     </tr>
       <?php endforeach; ?>
+  </table><br><br>
+  <form method="post" action="index.php">
+    <strong>Description: </strong> <input type="text" name="description"><br />
+    <input type="hidden" name="action" value="add">
+    <input type="submit" value="Add">
+  </form>
 
-    <tr>
-      <form action="add_todo.php">
-        <input type="submit" value="Add" />
-      </form>
-    </tr>
-  </table>
-<form method="post" action="index.php">
-  <strong>Description: </strong> <input type="text" name="description"><br />
-  <input type="hidden" name="action" value="add">
-  <input type="submit" value="Add">
-</form>
 </body>
 </html>

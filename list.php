@@ -16,13 +16,14 @@ echo "Below, you may find your to-do items <br /><br />";
 
 </head>
 <body>
-  <table>
+
+<table>
       <?php foreach($result as $res):?>
     <tr>
       <td><a href="details.php"><?php echo $res['todo_item'] ?></a></td>
       <td>
         <form action="index.php" method="post">
-          <input type="hidden" name="'item_id" value="<?php echo $res['id'] ?>">
+          <input type="hidden" name="item_id" value="<?php echo $res['id'] ?>">
           <input type="hidden" value="delete" name="action">
           <input type="submit" value="Delete">
         </form>
@@ -30,8 +31,12 @@ echo "Below, you may find your to-do items <br /><br />";
     </tr>
       <?php endforeach; ?>
   </table><br><br>
+
   <form method="post" action="index.php">
+    <strong>Title: </strong> <input type="text" name="title"><br />
     <strong>Description: </strong> <input type="text" name="description"><br />
+    <strong>Start Date: </strong> <input type="text" name="date_start"><br />
+    <strong>End Date: </strong> <input type="text" name="date_end"><br />
     <input type="hidden" name="action" value="add">
     <input type="submit" value="Add">
   </form>

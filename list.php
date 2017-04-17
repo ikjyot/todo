@@ -35,7 +35,7 @@ echo "Below, you may find your to-do items <br /><br />";
 
   <form method="post" action="index.php">
     <input type="hidden" name="action" value="add">
-    <label for="title">Title: </label> <input type="text" name="title"><br><br>
+    <label for="title">Title: </label> <input type="text" name="title" required><br><br>
     <label for="description">Description: </label> <textarea name="description"></textarea><br><br>
     <label for="start_date">Start</label>
     <input type="text" id="start" name="start_date">

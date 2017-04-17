@@ -19,6 +19,7 @@ echo "Below, you may find your to-do items <br /><br />";
 
 <table>
       <?php global $result;
+
       foreach($result as $res):?>
     <tr>
       <td><a href="details.php?todo=<?php echo $res['todo_item'] ?>"><?php echo $res['todo_item'] ?></a></td>
@@ -35,14 +36,27 @@ echo "Below, you may find your to-do items <br /><br />";
 
   <form method="post" action="index.php">
     <input type="hidden" name="action" value="add">
-    <label for="title">Title: </label> <input type="text" name="title" required><br><br>
-    <label for="description">Description: </label> <textarea name="description"></textarea><br><br>
-    <label for="start_date">Start</label>
-    <input type="text" id="start" name="start_date">
-    <label for="end_date">End</label>
-    <input type="text" id="end" name="end_date">
-    <br><br>
-    <input type="submit" value="Add">
+    <table>
+      <tr>
+        <td><label for="title">Title: </label></td>
+        <td><input type="text" name="title" id="title" required></td>
+      </tr>
+      <tr>
+        <td><label for="description">Description: </label></td>
+        <td><textarea id="description" name="description"></textarea></td>
+      </tr>
+      <tr>
+        <td><label for="start_date">Start</label></td>
+        <td><input type="text" id="start_date" name="start_date"></td>
+      </tr>
+      <tr>
+        <td><label for="end_date">End</label></td>
+        <td><input type="text" id="end_date" name="end_date"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="Add"></td>
+      </tr>
+    </table>
   </form>
 
 </body>

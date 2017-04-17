@@ -43,8 +43,8 @@ else if ($action=='registrar') {
 }
 
 else if ($action == 'add') {
-  if (isset($_POST['description']) and $_POST['description'] != '') {
-    addTodoItem($_COOKIE['my_id'], $_POST['description']);
+  if (isset($_POST['title']) and $_POST['title'] != '') {
+    addTodoItem($_COOKIE['my_id'], $_POST['title']);
   }
   $result = getTodoItems($_COOKIE['my_id']);
   include ('list.php');

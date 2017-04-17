@@ -31,10 +31,11 @@ function getTodoItems($user_id) {
   $statement->closeCursor();
   return $result;
 }
-function getTodoItem($todo_title) {
+function getTodoItem($user_id, $todo_title) {
   global $db;
-  $query = "SELECT * FROM todos WHERE todo_item = :todo_title";
+  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_item = :todo_title";
   $statement = $db->prepare($query);
+  $statement->bindValue(':userid', $user_id);
   $statement->bindValue(':todo_title', $todo_title);
   $statement->execute();
   $result = $statement->fetch();

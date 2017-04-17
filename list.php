@@ -18,7 +18,8 @@ echo "Below, you may find your to-do items <br /><br />";
 <body>
 
 <table>
-      <?php foreach($result as $res):?>
+      <?php global $result;
+      foreach($result as $res):?>
     <tr>
       <td><a href="details.php"><?php echo $res['todo_item'] ?></a></td>
       <td>
@@ -33,11 +34,14 @@ echo "Below, you may find your to-do items <br /><br />";
   </table><br><br>
 
   <form method="post" action="index.php">
-    <strong>Title: </strong> <input type="text" name="title"><br />
-    <strong>Description: </strong> <input type="text" name="description"><br />
-    <strong>Start Date: </strong> <input type="text" name="date_start"><br />
-    <strong>End Date: </strong> <input type="text" name="date_end"><br />
     <input type="hidden" name="action" value="add">
+    <label for="title">Title: </label> <input type="text" name="title"><br><br>
+    <label for="description">Description: </label> <textarea name="description"></textarea><br><br>
+    <label for="from">From</label>
+    <input type="text" id="from" name="from">
+    <label for="to">to</label>
+    <input type="text" id="to" name="to">
+    <br><br>
     <input type="submit" value="Add">
   </form>
 

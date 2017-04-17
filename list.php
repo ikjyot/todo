@@ -21,7 +21,7 @@ echo "Below, you may find your to-do items <br /><br />";
       <?php global $result;
       foreach($result as $res):?>
     <tr>
-      <td><a href="details.php"><?php echo $res['todo_item'] ?></a></td>
+      <td><a href="details.php?todo=<?php echo $res['todo_item'] ?>"><?php echo $res['todo_item'] ?></a></td>
       <td>
         <form action="index.php" method="post">
           <input type="hidden" name="item_id" value="<?php echo $res['id'] ?>">

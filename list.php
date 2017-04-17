@@ -37,10 +37,10 @@ echo "Below, you may find your to-do items <br /><br />";
     <input type="hidden" name="action" value="add">
     <label for="title">Title: </label> <input type="text" name="title"><br><br>
     <label for="description">Description: </label> <textarea name="description"></textarea><br><br>
-    <label for="from">From</label>
-    <input type="text" id="from" name="from">
-    <label for="to">to</label>
-    <input type="text" id="to" name="to">
+    <label for="start_date">Start</label>
+    <input type="text" id="start" name="start_date">
+    <label for="end_date">End</label>
+    <input type="text" id="end" name="end_date">
     <br><br>
     <input type="submit" value="Add">
   </form>

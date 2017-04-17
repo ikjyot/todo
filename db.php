@@ -30,7 +30,16 @@ function getTodoItems($user_id) {
   $result = $statement->fetchAll();
   $statement->closeCursor();
   return $result;
-
+}
+function getTodoItem($todo_title) {
+  global $db;
+  $query = "SELECT * FROM todos WHERE todo_item = :todo_title";
+  $statement = $db->prepare($query);
+  $statement->bindValue(':todo_title', $todo_title);
+  $statement->execute();
+  $result = $statement->fetch();
+  $statement->closeCursor();
+  return $result;
 }
 
 function createUser($username, $password) {

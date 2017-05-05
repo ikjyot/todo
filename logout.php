@@ -3,9 +3,9 @@
  * Created by PhpStorm.
  * User: isg6
  * Date: 5/5/2017
- * Time: 2:40 AM
+ * Time: 9:42 AM
  */
-session_start();
-session_destroy();
-header("Location: index.php");
 ?>
+<form method="post" action="logout.inc.php">
+  <button type="submit">Logout</button>
+</form>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 function isUserValid($email,$password){
   global $db;
   $query = 'SELECT * FROM users WHERE email = :email and 
@@ -24,23 +25,21 @@ function isUserValid($email,$password){
     $_SESSION['name'] = $result[0]['first_name'].' '.$result[0]['last_name'];
     $_SESSION['user_id'] = $result[0]['id'];
     $_SESSION['isLogged'] = true;
-    /*setcookie('login', $email);
-    setcookie('my_id', $result[0]['id']);
-    setcookie('isLogged', true);*/
     return true;
-  } else if($count2 == 1){
+  } else if($count!=1 && $count2 == 1){
     session_unset();
     $_SESSION['name'] = false;
     $_SESSION['user_id'] = false;
     $_SESSION['isLogged'] = false;
     return 'Email Exists';
-  } else if($count2 == 0) {
+  } else if($count!=1 && $count2 == 0) {
     session_unset();
     $_SESSION['name'] = false;
     $_SESSION['user_id'] = false;
     $_SESSION['isLogged'] = false;
     return 'Email Does Not Exist';
   }
+  return false;
 }
 function createUser($first_name, $last_name, $phone, $birthday, $gender, $email, $password) {
   global $db;
@@ -55,12 +54,12 @@ function createUser($first_name, $last_name, $phone, $birthday, $gender, $email,
   if($count > 0) {
     return true;
   } else {
-    $query = "INSERT INTO users (first_name, last_name, phone, birthday, gender, email, password) VALUES (:first_name, :last_name, :phone, :birthday, :gender, :email, :pass)";
-    $statement = $db->prepare($query);
-    $statement->bindValue('$:first_name',$first_name);
-    $statement->bindValue('$:last_name',$last_name);
-    $statement->bindValue('$:phone',$phone);
-    $statement->bindValue('$:birthday',$birthday);
+    $insert_query = "INSERT INTO users (first_name, last_name, phone, birthday, gender, email, password) VALUES (:first_name, :last_name, :phone, :birthday, :gender, :email, :pass)";
+    $statement = $db->prepare($insert_query);
+    $statement->bindValue(':first_name',$first_name);
+    $statement->bindValue(':last_name',$last_name);
+    $statement->bindValue(':phone',$phone);
+    $statement->bindValue(':birthday',$birthday);
     $statement->bindValue('gender',$gender);
     $statement->bindValue(':email',$email);
     $statement->bindValue(':pass',$password);
@@ -103,7 +102,6 @@ function addTodoItem($user_id, $todo_title, $description, $due_date, $due_time) 
   $statement->closeCursor();
   return true;
 }
-
 function deleteTodoItem($user_id, $todo_id) {
   global $db;
   $query = 'DELETE FROM todos WHERE id = :todo_id and user_id = :user_id';

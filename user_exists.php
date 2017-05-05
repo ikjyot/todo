@@ -1,14 +1,14 @@
 <?php
-  echo "The user exists, please change the username <br />"
+include "header.inc.php";
+if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
+  echo "Email Already Exists, Choose something else <br />";
 ?>
 
-<html>
-<head>
-
-</head>
-<body>
-  <form action="register.php">
-    <input type="submit" value="Go back" />
-  </form>
-</body>
-</html>
+<form action="register.php">
+  <button type="submit">Go back</button>
+</form>
+<?php
+} else {
+  header('Location: index.php');
+}
+?>

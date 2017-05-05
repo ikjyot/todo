@@ -35,12 +35,7 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   <!--Page Content---------------------------------------------------------->
 <?php
 } else {
-  echo '<h1>You are already registered</h1>';
-?>
-<form method="post" action="index.php">
-  <button type="submit">Go back</button>
-</form>
-<?php
+  header("Location: index.php");
 }
 include 'footer.inc.php';
 ?>

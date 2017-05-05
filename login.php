@@ -4,16 +4,23 @@ include "header.inc.php";
 if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   ?>
 
-  <h1>Login</h1>
-  <form method="post" action="index.php">
-    <input type="email" name="reg_email" placeholder="Email" value=""/><br><br>
-    <input type="password" name="reg_password" placeholder="Password" value=""/><br><br>
+  <h2>Log In</h2>
+  <form method="POST" action="index.php">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="email" id="reg_email" name="reg_email">
+      <label class="mdl-textfield__label" for="reg_email">Email</label>
+    </div>
+    <br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="password" id="reg_password" name="reg_password">
+      <label class="mdl-textfield__label" for="reg_password">Password</label>
+    </div>
     <input type="hidden" name="action" value="test_user">
-    <button type="submit">Login</button>
-  </form>
-
-  <form action="register.php">
-    <input type="submit" value="Register">
+    <br>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+      Login
+    </button>
+    &nbsp;&nbsp;Not Registered? <a href="register.php">Sign Up</a>
   </form>
 
 <?php

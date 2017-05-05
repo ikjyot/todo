@@ -30,7 +30,7 @@ echo "Below, you may find your to-do items <br /><br />";
       <?php endforeach; ?>
   </table><br><br>
 
-  <form method="post" action="index.php">
+  <!--<form method="post" action="index.php">
     <input type="hidden" name="action" value="add">
     <table>
       <tr>
@@ -53,7 +53,7 @@ echo "Below, you may find your to-do items <br /><br />";
         <td><input type="submit" value="Add"></td>
       </tr>
     </table>
-  </form>
+  </form>-->
 <?php
 } else {
   header("Location: index.php");

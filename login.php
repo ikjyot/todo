@@ -9,7 +9,7 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     <input type="email" name="reg_email" placeholder="Email" value=""/><br><br>
     <input type="password" name="reg_password" placeholder="Password" value=""/><br><br>
     <input type="hidden" name="action" value="test_user">
-    <input type="submit" value="Login"/>
+    <button type="submit">Login</button>
   </form>
 
   <form action="register.php">

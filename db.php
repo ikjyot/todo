@@ -27,16 +27,10 @@ function isUserValid($email,$password){
     $_SESSION['isLogged'] = true;
     return true;
   } else if($count!=1 && $count2 == 1){
-    session_unset();
-    $_SESSION['name'] = false;
-    $_SESSION['user_id'] = false;
-    $_SESSION['isLogged'] = false;
+    session_destroy();
     return 'Email Exists';
   } else if($count!=1 && $count2 == 0) {
-    session_unset();
-    $_SESSION['name'] = false;
-    $_SESSION['user_id'] = false;
-    $_SESSION['isLogged'] = false;
+    session_destroy();
     return 'Email Does Not Exist';
   }
   return false;

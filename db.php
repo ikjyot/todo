@@ -1,23 +1,23 @@
 <?php
 
-function isUserValid($username,$password){
+function isUserValid($email,$password){
   global $db;
-  $query = 'SELECT * FROM users WHERE username = :name and 
-     passwordHash = :pass';
+  $query = 'SELECT * FROM users WHERE email = :email and 
+     password = :pass';
   $statement = $db->prepare($query);
-  $statement->bindValue(':name',$username);
+  $statement->bindValue(':email',$email);
   $statement->bindValue(':pass',$password);
   $statement->execute();
   $result= $statement->fetchAll();
   $statement->closeCursor();
   $count = $statement->rowCount();
 
-  $query2 = 'SELECT * FROM users WHERE username = :name';
-  $statement2 = $db->prepare($query);
-  $statement2->bindValue(':name',$username);
+  $query2 = 'SELECT * FROM users WHERE email = :name';
+  $statement2 = $db->prepare($query2);
+  $statement2->bindValue(':email',$email);
   $statement2->bindValue(':pass',$password);
   $statement2->execute();
-  $result2= $statement2->fetchAll();
+  //$result2= $statement2->fetchAll();
   $statement2->closeCursor();
   $count2 = $statement2->rowCount();
 
@@ -25,7 +25,7 @@ function isUserValid($username,$password){
     $_SESSION['name'] = $result[0]['first_name'].' '.$result[0]['last_name'];
     $_SESSION['user_id'] = $result[0]['id'];
     $_SESSION['isLogged'] = true;
-    setcookie('login', $username);
+    setcookie('login', $email);
     setcookie('my_id', $result[0]['id']);
     setcookie('isLogged', true);
     return true;
@@ -43,11 +43,11 @@ function isUserValid($username,$password){
     return false;
   }
 }
-function createUser($username, $password) {
+function createUser($email, $password) {
   global $db;
-  $query = "SELECT * FROM users WHERE username = :name";
+  $query = "SELECT * FROM users WHERE email = :email";
   $statement = $db->prepare($query);
-  $statement->bindValue(':name', $username);
+  $statement->bindValue(':email', $email);
   $statement->execute();
   /*$result = $statement->fetchAll();*/
   $statement->closeCursor();
@@ -56,9 +56,9 @@ function createUser($username, $password) {
   if($count > 0) {
     return true;
   } else {
-    $query = "INSERT INTO users (username, passwordHash) VALUES (:name, :pass)";
+    $query = "INSERT INTO users (email, password) VALUES (:email, :pass)";
     $statement = $db->prepare($query);
-    $statement->bindValue(':name',$username);
+    $statement->bindValue(':email',$email);
     $statement->bindValue(':pass',$password);
     $statement->execute();
     $statement->closeCursor();
@@ -77,7 +77,7 @@ function getTodoItems($user_id) {
 }
 function getTodoItem($user_id, $todo_title) {
   global $db;
-  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_item = :todo_title";
+  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_title = :todo_title";
   $statement = $db->prepare($query);
   $statement->bindValue(':userid', $user_id);
   $statement->bindValue(':todo_title', $todo_title);
@@ -86,12 +86,15 @@ function getTodoItem($user_id, $todo_title) {
   $statement->closeCursor();
   return $result;
 }
-function addTodoItem($user_id, $todo_text) {
+function addTodoItem($user_id, $todo_title, $description, $due_date, $due_time) {
   global $db;
-  $query = "INSERT INTO todos(user_id, todo_item) values (:user_id, :todo_text)";
+  $query = "INSERT INTO todos(user_id, todo_title, description, due_date, due_time) values (:user_id, :todo_title, :description, :due_date, :due_time)";
   $statement = $db->prepare($query);
   $statement->bindValue(':user_id', $user_id);
-  $statement->bindValue(':todo_text', $todo_text);
+  $statement->bindValue(':todo_title', $todo_title);
+  $statement->bindValue(':description', $description);
+  $statement->bindValue(':due_date', $due_date);
+  $statement->bindValue(':due_time', $due_time);
   $statement->execute();
   $statement->closeCursor();
   return true;

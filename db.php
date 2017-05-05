@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function isUserValid($email,$password){
   global $db;
   $query = 'SELECT * FROM users WHERE email = :email and 
@@ -12,10 +12,9 @@ function isUserValid($email,$password){
   $statement->closeCursor();
   $count = $statement->rowCount();
 
-  $query2 = 'SELECT * FROM users WHERE email = :name';
+  $query2 = 'SELECT * FROM users WHERE email = :email';
   $statement2 = $db->prepare($query2);
   $statement2->bindValue(':email',$email);
-  $statement2->bindValue(':pass',$password);
   $statement2->execute();
   //$result2= $statement2->fetchAll();
   $statement2->closeCursor();
@@ -25,25 +24,25 @@ function isUserValid($email,$password){
     $_SESSION['name'] = $result[0]['first_name'].' '.$result[0]['last_name'];
     $_SESSION['user_id'] = $result[0]['id'];
     $_SESSION['isLogged'] = true;
-    setcookie('login', $email);
+    /*setcookie('login', $email);
     setcookie('my_id', $result[0]['id']);
-    setcookie('isLogged', true);
+    setcookie('isLogged', true);*/
     return true;
   } else if($count2 == 1){
-    return 'Email Exists';
-  } else{
     session_unset();
     $_SESSION['name'] = false;
     $_SESSION['user_id'] = false;
     $_SESSION['isLogged'] = false;
-    unset($_COOKIE['login']);
-    setcookie('login', false);
-    setcookie('isLogged', false);
-    setcookie('my_id', false);
-    return false;
+    return 'Email Exists';
+  } else if($count2 == 0) {
+    session_unset();
+    $_SESSION['name'] = false;
+    $_SESSION['user_id'] = false;
+    $_SESSION['isLogged'] = false;
+    return 'Email Does Not Exist';
   }
 }
-function createUser($email, $password) {
+function createUser($first_name, $last_name, $phone, $birthday, $gender, $email, $password) {
   global $db;
   $query = "SELECT * FROM users WHERE email = :email";
   $statement = $db->prepare($query);
@@ -56,8 +55,13 @@ function createUser($email, $password) {
   if($count > 0) {
     return true;
   } else {
-    $query = "INSERT INTO users (email, password) VALUES (:email, :pass)";
+    $query = "INSERT INTO users (first_name, last_name, phone, birthday, gender, email, password) VALUES (:first_name, :last_name, :phone, :birthday, :gender, :email, :pass)";
     $statement = $db->prepare($query);
+    $statement->bindValue('$:first_name',$first_name);
+    $statement->bindValue('$:last_name',$last_name);
+    $statement->bindValue('$:phone',$phone);
+    $statement->bindValue('$:birthday',$birthday);
+    $statement->bindValue('gender',$gender);
     $statement->bindValue(':email',$email);
     $statement->bindValue(':pass',$password);
     $statement->execute();

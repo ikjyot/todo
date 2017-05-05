@@ -21,6 +21,7 @@ session_start();
 </head>
 <body>
 <header>
-
+  <!--header navbar-->
 </header>
 <main>
+<div class="container">

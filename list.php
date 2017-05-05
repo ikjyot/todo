@@ -5,21 +5,17 @@
  * Date: 4/3/2017
  * Time: 1:32 PM
  */
+session_start();
+include 'header.inc.php';
+if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
 echo "<h1>To Do List System</h1>";
-echo "Welcome, ".$_COOKIE['login'].'<br />';
+echo "Welcome, ".$_SESSION['name'].'<br />';
 echo "Below, you may find your to-do items <br /><br />";
-
 ?>
 
-<html>
-<head>
-
-</head>
-<body>
-
-<table>
-      <?php global $result;
-
+  <table>
+      <?php
+      global $result;
       foreach($result as $res):?>
     <tr>
       <td><a href="details.php?todo=<?php echo $res['todo_item'] ?>"><?php echo $res['todo_item'] ?></a></td>
@@ -47,17 +43,20 @@ echo "Below, you may find your to-do items <br /><br />";
       </tr>
       <tr>
         <td><label for="start_date">Start</label></td>
-        <td><input type="text" id="start_date" name="start_date"></td>
+        <td><input type="date" id="start_date" name="start_date"></td>
       </tr>
       <tr>
         <td><label for="end_date">End</label></td>
-        <td><input type="text" id="end_date" name="end_date"></td>
+        <td><input type='date' id="end_date" name="end_date"></td>
       </tr>
       <tr>
         <td><input type="submit" value="Add"></td>
       </tr>
     </table>
   </form>
-
-</body>
-</html>
+<?php
+} else {
+  header("Location: index.php");
+}
+include 'footer.inc.php';
+?>

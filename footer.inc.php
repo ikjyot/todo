@@ -1,18 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: isg6
- * Date: 5/4/2017
- * Time: 10:30 PM
- */
-?>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </div>
 </main>
 <footer>
-<!--footer navbar-->
+  <p>&copy; by Ikjyot Singh Gujral (isg6)</p>
 </footer>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+</div>
 </body>
 </html>

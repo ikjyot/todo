@@ -6,9 +6,9 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
 
   <h1>Login</h1>
   <form method="post" action="index.php">
-    <strong>Email:</strong><input type="email" name="reg_email" value=""/><br><br>
-    <strong>Password:</strong><input type="password" name="reg_password" value=""/><br><br>
-    <input type="hidden" name="action" value="test_user"><br>
+    <input type="email" name="reg_email" placeholder="Email" value=""/><br><br>
+    <input type="password" name="reg_password" placeholder="Password" value=""/><br><br>
+    <input type="hidden" name="action" value="test_user">
     <input type="submit" value="Login"/>
   </form>
 

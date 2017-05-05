@@ -10,7 +10,8 @@ if($action == NULL && !isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION[
   $action = "show_login_page";
 } elseif ($action == NULL && isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   $result = getTodoItems($_SESSION['user_id']);
-  include ('list.php');
+  include 'list.php';
+  include 'logout.php';
 }
 //***************************************************************//
 if($action == "show_login_page")
@@ -26,7 +27,8 @@ else if($action == 'test_user')
   if($valid_user === true)
   {
     $result = getTodoItems($_SESSION['user_id']);
-    include ('list.php');
+    include 'list.php';
+    include 'logout.php';
   } elseif ($valid_user === 'Email Exists'){
     echo '<h2>Email Exists, Incorrect password</h2>';
   } elseif ($valid_user === 'Email Does Not Exist'){

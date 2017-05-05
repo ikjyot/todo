@@ -3,7 +3,7 @@ session_start();
 include "header.inc.php";
 if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   ?>
-
+  <div>
   <h2>Log In</h2>
   <form method="POST" action="index.php">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -22,7 +22,7 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     </button>
     &nbsp;&nbsp;Not Registered? <a href="register.php">Sign Up</a>
   </form>
-
+  </div>
 <?php
 } else {
   echo 'Already Logged In! <a href="index.php">Go back?</a>';

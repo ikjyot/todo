@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'header.inc.php';
 if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   ?>

@@ -1,6 +1,7 @@
 .hide {
     display: none;
 }
+
 main {
     flex: 1 0 auto;
     margin: 0 auto;
@@ -28,6 +29,20 @@ body {
     margin-top: 150px;
     border: 2px solid whitesmoke;
 }
+.page-content .register_section{
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border: 2px solid whitesmoke;
+    width: 400px;
+    height: 640px;
+    margin-top: 45px;
+}
+
+.signup_btn_div{
+    margin-top: 15px;
+}
 
 .logout_button {
     float: right;
@@ -42,7 +57,7 @@ h3 {
     margin-top: 5px;
 }
 
-h2 {
-    margin-top: 10px;
+div h2 {
+    margin-top: 0px;
     margin-bottom: 10px;
 }

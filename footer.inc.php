@@ -11,14 +11,6 @@
 <script src="node_modules/pickadate/lib/compressed/picker.date.js"></script>
 <script src="node_modules/pickadate/lib/compressed/picker.time.js"></script>
 <script src="js/todo.js"></script>
-<script>
-  $(function() {
-    $('#reg_birthdate').pickadate({
-      formatSubmit : 'yyyy-mm-dd',
-      hiddenName : true
-    });
-  });
-</script>
 
 </body>
 </html>

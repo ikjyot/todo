@@ -3,17 +3,20 @@
 session_start();
 require('db_connection.php');
 require('db.php');
+
 $action = filter_input(INPUT_POST, "action");
-//***************************************************************//
+
 if($action == NULL && !isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged']))
 {
   $action = "show_login_page";
-} elseif ($action == NULL && isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
-  $result = getTodoItems($_SESSION['user_id']);
-  include 'list.php';
-  include 'logout.php';
 }
-//***************************************************************//
+
+elseif ($action == NULL && isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
+  $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+  $result2 = getTodoItems($_SESSION['user_id'], 'done');
+  include 'list.php';
+}
+
 if($action == "show_login_page")
 {
   include('login.php');
@@ -28,7 +31,6 @@ else if($action == 'test_user')
   {
     $result = getTodoItems($_SESSION['user_id']);
     include 'list.php';
-    include 'logout.php';
   } elseif ($valid_user === 'Email Exists'){
     echo '<h2>Email Exists, Incorrect password</h2>';
   } elseif ($valid_user === 'Email Does Not Exist'){
@@ -37,8 +39,6 @@ else if($action == 'test_user')
 }
 
 else if ($action=='registrar') {
-  //echo "We want create a new account";
-/*  if (isset($_POST['reg_first_name'], $_POST['reg_last_name'], $_POST['reg_phone'], $_POST['reg_birthday'], $_POST['reg_gender'], $_POST['reg_email'], $_POST['reg_password'])) {*/
     $first_name = filter_input(INPUT_POST, 'reg_first_name');
     $last_name = filter_input(INPUT_POST, 'reg_last_name');
     $phone = filter_input(INPUT_POST, 'reg_phone');
@@ -63,6 +63,9 @@ else if ($action == 'add') {
   }
   $result = getTodoItems($_SESSION['user_id']);
   include ('list.php');
+}
+else if ($action == 'edit') {
+  /*Code to update the already set todo item's properties*/
 }
 
 else if($action == 'delete'){

@@ -3,7 +3,7 @@ session_start();
 include "header.inc.php";
 if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   ?>
-  <div>
+  <div id="login_center" class="z-depth-4 hoverable">
   <h2>Log In</h2>
   <form method="POST" action="index.php">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

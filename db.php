@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function isUserValid($email,$password){
   global $db;
   $query = 'SELECT * FROM users WHERE email = :email and 
@@ -62,11 +61,12 @@ function createUser($first_name, $last_name, $phone, $birthday, $gender, $email,
     return false;
   }
 }
-function getTodoItems($user_id) {
+function getTodoItems($user_id, $todo_status) {
   global $db;
-  $query = "SELECT * FROM todos WHERE user_id = :userid";
+  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_status = :todo_status";
   $statement = $db->prepare($query);
   $statement->bindValue(':userid', $user_id);
+  $statement->bindValue(':todo_status', $todo_status);
   $statement->execute();
   $result = $statement->fetchAll();
   $statement->closeCursor();
@@ -105,5 +105,4 @@ function deleteTodoItem($user_id, $todo_id) {
   $statement->execute();
   $statement->closeCursor();
 }
-
 ?>

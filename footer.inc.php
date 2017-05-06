@@ -1,10 +1,30 @@
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </div>
 </main>
-<footer>
-  <p>&copy; by Ikjyot Singh Gujral (isg6)</p>
+<footer class="page-footer red">
+  <h6 class=" center white-text" style="position: relative; bottom: 10px" >© 2017 Ikjyot Singh Gujral (isg6)</h6>
 </footer>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script src="node_modules/pickadate/lib/compressed/picker.js"></script>
+<script src="node_modules/pickadate/lib/compressed/picker.date.js"></script>
+<script src="node_modules/pickadate/lib/compressed/picker.time.js"></script>
+
+<script>
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
+<!--<script>
+  $(function() {
+    // Enable Pickadate on an input field
+    $('#reg_birthdate').pickadate({
+      formatSubmit : 'yyyy-mm-dd',
+      hiddenName : true
+    });
+  });-->
+</script>
 </body>
 </html>

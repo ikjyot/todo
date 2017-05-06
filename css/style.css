@@ -1,12 +1,48 @@
 .hide {
     display: none;
 }
+main {
+    flex: 1 0 auto;
+    margin: 0 auto;
+}
+
 body {
+    background: #fafafa;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-main {
-    flex: 1 0 auto;
+.login_center{
+    position: relative;
+    vertical-align: middle;
+}
+.page-content{
+    padding: 5px;
+    font-size: 16px;
+}
+.page-content #login_center{
+    padding: 15px;
+    margin-top: 150px;
+    border: 2px solid whitesmoke;
+}
+
+.logout_button {
+    float: right;
+    clear: both;
+}
+
+.name_display {
+    font-size: 1.4em;
+}
+
+h3 {
+    margin-top: 5px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

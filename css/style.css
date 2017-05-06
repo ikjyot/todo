@@ -39,6 +39,11 @@ body {
     height: 640px;
     margin-top: 45px;
 }
+.page-content #edit_todo{
+    padding: 15px;
+    margin-top: 150px;
+    border: 2px solid whitesmoke;
+}
 
 .signup_btn_div{
     margin-top: 15px;

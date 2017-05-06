@@ -44,6 +44,12 @@ body {
     margin-top: 150px;
     border: 2px solid whitesmoke;
 }
+.page-content #add_todo{
+    padding: 15px;
+    margin-top: 150px;
+    border: 2px solid whitesmoke;
+    width: 350px;
+}
 
 .signup_btn_div{
     margin-top: 15px;

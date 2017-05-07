@@ -40,7 +40,6 @@ function createUser($first_name, $last_name, $phone, $birthday, $gender, $email,
   $statement = $db->prepare($query);
   $statement->bindValue(':email', $email);
   $statement->execute();
-  /*$result = $statement->fetchAll();*/
   $statement->closeCursor();
   $count = $statement->rowCount();
 

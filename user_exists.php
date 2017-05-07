@@ -12,3 +12,6 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   header('Location: index.php');
 }
 ?>
+<?php
+include 'footer.inc.php';
+?>

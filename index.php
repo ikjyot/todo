@@ -13,25 +13,6 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
-
-  else if ($action == 'registrar') {
-    $first_name = filter_input(INPUT_POST, 'reg_first_name');
-    $last_name = filter_input(INPUT_POST, 'reg_last_name');
-    $phone = filter_input(INPUT_POST, 'reg_phone');
-    $birthday = filter_input(INPUT_POST, 'reg_birthday');
-    $gender = filter_input(INPUT_POST, 'reg_gender');
-    $email = filter_input(INPUT_POST, 'reg_email');
-    $password = filter_input(INPUT_POST, 'reg_password');
-
-    $user_exists = createUser($first_name, $last_name, $phone, $birthday, $gender, $email, $password);
-
-    if ($user_exists == true) {
-      include('user_exists.php');
-    } else {
-      header("Location: index.php");
-    }
-    /*}*/
-  }
   else if ($action == 'add') {
     $add_todo_title = filter_input(INPUT_POST, 'add_todo_title');
     $add_due_date = filter_input(INPUT_POST, 'add_due_date');
@@ -102,8 +83,30 @@ else {
       echo '<h2>Account Does Not Exist, ', '<a href="register.php">Register</a></h2>';
     }
   }
+  else if ($action == 'registrar') {
+    $first_name = filter_input(INPUT_POST, 'reg_first_name');
+    $last_name = filter_input(INPUT_POST, 'reg_last_name');
+    $phone = filter_input(INPUT_POST, 'reg_phone');
+    $birthday = filter_input(INPUT_POST, 'reg_birthday');
+    $gender = filter_input(INPUT_POST, 'reg_gender');
+    $email = filter_input(INPUT_POST, 'reg_email');
+    $password = filter_input(INPUT_POST, 'reg_password');
+    $user_exists = createUser($first_name, $last_name, $phone, $birthday, $gender, $email, $password);
+    if ($user_exists == true) {
+      include('user_exists.php');
+    } else {
+      $valid_user = isUserValid($email, $password);
+      if ($valid_user === true) {
+        $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+        $result2 = getTodoItems($_SESSION['user_id'], 'completed');
+        include 'list.php';
+        /*header("Location: index.php");*/
+      }
+    }
+  }
   elseif ($action == "") {
     include('login.php');
   }
 }
+
 ?>

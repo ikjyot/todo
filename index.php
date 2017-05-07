@@ -13,20 +13,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'done');
     include 'list.php';
   }
-  else if ($action == 'test_user') {
-    $email = filter_input(INPUT_POST, 'reg_email');
-    $password = filter_input(INPUT_POST, 'reg_password');
-    $valid_user = isUserValid($email, $password);
-    if ($valid_user === true) {
-      $result1 = getTodoItems($_SESSION['user_id'], 'pending');
-      $result2 = getTodoItems($_SESSION['user_id'], 'completed');
-      include 'list.php';
-    } elseif ($valid_user === 'Email Exists') {
-      echo '<h2>Email Exists, Incorrect password</h2>';
-    } elseif ($valid_user === 'Email Does Not Exist') {
-      echo '<h2>Account Does Not Exist, ', '<a href="register.php">Register</a></h2>';
-    }
-  }
+
   else if ($action == 'registrar') {
     $first_name = filter_input(INPUT_POST, 'reg_first_name');
     $last_name = filter_input(INPUT_POST, 'reg_last_name');
@@ -67,8 +54,21 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
 }
 
 else {
-  $action="show_login_page";
-  if ($action == "show_login_page") {
+  if ($action == 'test_user') {
+    $email = filter_input(INPUT_POST, 'reg_email');
+    $password = filter_input(INPUT_POST, 'reg_password');
+    $valid_user = isUserValid($email, $password);
+    if ($valid_user === true) {
+      $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+      $result2 = getTodoItems($_SESSION['user_id'], 'completed');
+      include 'list.php';
+    } elseif ($valid_user === 'Email Exists') {
+      echo '<h2>Email Exists, Incorrect password</h2>';
+    } elseif ($valid_user === 'Email Does Not Exist') {
+      echo '<h2>Account Does Not Exist, ', '<a href="register.php">Register</a></h2>';
+    }
+  }
+  elseif ($action == "") {
     include('login.php');
   }
 }

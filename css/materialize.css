@@ -2552,7 +2552,7 @@ ul:not(.browser-default) li {
 }
 
 a {
-  color: #039be5;
+  color: #f44336;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -5893,8 +5893,10 @@ select:focus {
 
 button:focus {
   outline: none;
-  background-color: #2ab7a9;
+  background-color: #fff;
 }
+
+
 
 label {
   font-size: 0.9rem;

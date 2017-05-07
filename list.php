@@ -8,15 +8,13 @@
 session_start();
 include 'header.inc.php';
 if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
-echo "<h5>Welcome, ".$_SESSION['name'].'</h5>';
-echo "<h5>Below, you may find your to-do items </h5>";
 ?>
     <?php
       global $result1, $result2;
     ?>
-
-    <div class="todo_container">
-      <strong>ToDo Items</strong>
+  <div class="todo_pagecontent">
+  <h5 class="center">Todo Items </h5>
+    <div class="todo_container " data-role="page">
     <?php
       if (!empty($result1)) {
         foreach ($result1 as $res1):?>
@@ -27,22 +25,22 @@ echo "<h5>Below, you may find your to-do items </h5>";
                   <form action="index.php" method="post" class="change_status">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="change_status" name="action">
-                    <button type="submit" class="btn_transparent"><i class="material-icons marg4 red-text">check</i></button>
+                    <button type="submit" class="btn_transparent check pending"><i class="material-icons marg4 pending">check</i></button>
                   </form>
                 </div>
                 <?php echo $res1['todo_title'] ?>
-                <div class="right del">
+                <div class="right">
                   <form action="index.php" method="post" class="delete_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="delete" name="action">
-                    <button type="submit" class="btn_transparent"><i class="material-icons marg4">delete</i></button>
+                    <button type="submit" class="btn_transparent del"><i class="material-icons marg4">delete</i></button>
                   </form>
                 </div>
-                <div class="right edit">
+                <div class="right">
                   <form action="index.php" method="post" class="edit_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="edit" name="action">
-                    <button class="btn_transparent" type="submit"><i class="material-icons marg4">edit</i></button>
+                    <button class="btn_transparent edit" type="submit"><i class="material-icons marg4">edit</i></button>
                   </form>
                 </div>
               </div>
@@ -59,7 +57,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
       } ?>
   <!--The Section Divider goes <here-->
   <div class="divider"></div>
-  <strong>Completed Items</strong>
+      <h5 class="center">Completed Items </h5>
 
   <?php
   if (!empty($result2)) {
@@ -68,10 +66,10 @@ echo "<h5>Below, you may find your to-do items </h5>";
         <li>
           <div class="collapsible-header completed">
             <div class="left">
-              <form action="index.php" method="post" class="change_status">
+              <form action="index.php" method="post" class="change_status" style="margin-bottom: 0px">
                 <input type="hidden" name="todo_id" value="<?php echo $res2['id'] ?>">
                 <input type="hidden" value="change_status" name="action">
-                <button type="submit" class="btn_transparent"><i class="material-icons marg4 green-text">check</i></button>
+                <button type="submit" class="btn_transparent check completed"><i class="material-icons marg4">check</i></button>
               </form>
             </div>
             <?php echo $res2['todo_title'] ?>
@@ -79,7 +77,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
               <form action="index.php" method="post" class="delete_todo_form">
                 <input type="hidden" name="todo_id" value="<?php echo $res2['id'] ?>">
                 <input type="hidden" value="delete" name="action">
-                <button type="submit" class="btn_transparent"><i class="material-icons marg4">delete</i></button>
+                <button type="submit" class="btn_transparent del"><i class="material-icons marg4">delete</i></button>
               </form>
             </div>
           </div>
@@ -92,6 +90,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
     echo '<h6>You have no completed items</h6>';
   } ?>
     </div>
+  </div>
 <?php
 } else {
   header("Location: index.php");

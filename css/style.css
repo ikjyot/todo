@@ -71,21 +71,73 @@ h3 {
     background: transparent;
     border:0;
     padding:0;
+    width: 40px;
 }
+
 form.delete_todo_form{
     margin: 0;
 }
 form.edit_todo_form{
     margin: 0;
 }
+form.change_status{
+    margin: 0;
+}
 i.material-icons.marg4{
-    margin-right: 4px;
-    width: 46px;
+    margin-right: 0;
+    margin-left: 6px;
+}
+button.btn_transparent.del{
+  margin-right: 5px;
+    border-left: 2px solid lightgray;
+    line-height: 70%;
+}
+div.left.check {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+div.right.edit {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 div.collapsible-header{
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0;
+    padding-right: 0;
 }
+.todo_pagecontent{
+    width: 470px;
+}
+button.del:focus {
+    outline: none;
+    background-color: #fff;
+    color: #f44336;
+}
+button.del:hover{
+    color: #f44336;
+}
+button.edit:focus {
+    outline: none;
+    background-color: #fff;
+    color: #2962ff ;
+}
+button.edit:hover{
+    color: #2962ff;
+}
+button.check.pending{
+    color: #f44336;
+}
+button.check.pending:hover{
+    color: limegreen ;
+}
+button.check.completed{
+    color: limegreen;
+}
+button.check.completed:hover{
+    color: #f44336 ;
+}
+/*div.collapsible-body{
+    padding: 10px;!important;
+}*/
 div h2 {
     margin-top: 0;
     margin-bottom: 10px;

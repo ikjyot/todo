@@ -33,9 +33,11 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     /*}*/
   }
   else if ($action == 'add') {
-    if (isset($_POST['todo_id']) and $_POST['todo_id'] != '') {
-      addTodoItem($_SESSION['user_id'], $_POST['todo_id'], $_POST['todo_title'], $_POST['due_date'], $_POST['due_time']);
-    }
+    $add_todo_title = filter_input(INPUT_POST, 'add_todo_title');
+    $add_due_date = filter_input(INPUT_POST, 'add_due_date');
+    $add_due_time = filter_input(INPUT_POST, 'add_due_time');
+    addTodoItem($_SESSION['user_id'], $add_todo_title, $add_due_date, $add_due_time);
+
     $result1 = getTodoItems($_SESSION['user_id'], 'pending');
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';

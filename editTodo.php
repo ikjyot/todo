@@ -23,7 +23,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
         <input class="datepicker" type='date' placeholder="Due Date" id="edit_due_date" value="<?php echo $_SESSION['due_date'] ?>" name="edit_due_date">
       </div>
       <div class="input-field">
-        <input class="datepicker" type='time' placeholder="Due Time" id="edit_due_time" value="<?php echo $_SESSION['due_time'] ?>" name="edit_due_time">
+        <input class="timepicker" type='time' placeholder="Due Time" id="edit_due_time" value="<?php echo $_SESSION['due_time'] ?>" name="edit_due_time">
       </div>
       <button class="waves-button-input waves-light btn red hoverable" type="submit" style="display: inline">Edit</button>
     </form>

@@ -13,7 +13,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
 
       <input class="datepicker" type="date" placeholder="Due Date" id="add_due_date" name="add_due_date">
 
-      <input type='time' class="datepicker" id="add_due_time" placeholder="Due Time" name="add_due_time">
+      <input type='time' class="timepicker" id="add_due_time" placeholder="Due Time" name="add_due_time">
 
       <button class="waves-button-input waves-light btn hoverable red" type="submit">Add</button>
     </form>

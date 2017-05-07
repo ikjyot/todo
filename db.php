@@ -72,12 +72,12 @@ function getTodoItems($user_id, $todo_status) {
   $statement->closeCursor();
   return $result;
 }
-function getTodoItem($user_id, $todo_title) {
+function getTodoItem($user_id, $todo_id) {
   global $db;
-  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_title = :todo_title";
+  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_id = :todo_id";
   $statement = $db->prepare($query);
   $statement->bindValue(':userid', $user_id);
-  $statement->bindValue(':todo_title', $todo_title);
+  $statement->bindValue(':todo_id', $todo_id);
   $statement->execute();
   $result = $statement->fetch();
   $statement->closeCursor();
@@ -125,5 +125,18 @@ function getCurrentStatus($user_id, $todo_id){
   $result = $statement->fetch();
   $statement->closeCursor();
   return $result['todo_status'];
+}
+function updateTodo($user_id, $todo_id, $todo_title, $due_date, $due_time) {
+  global $db;
+  $query = "UPDATE todos SET todo_title=:todo_title AND due_date = :due_date AND due_time=:due_time WHERE user_id=:user_id AND id=:todo_id";
+  $statement = $db->prepare($query);
+  $statement->bindValue(':user_id', $user_id);
+  $statement->bindValue(':todo_id', $todo_id);
+  $statement->bindValue(':todo_title', $todo_title);
+  $statement->bindValue(':due_date', $due_date);
+  $statement->bindValue(':due_time', $due_time);
+  $statement->execute();
+  $statement->closeCursor();
+  return true;
 }
 ?>

@@ -27,7 +27,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
                   <form action="index.php" method="post" class="change_status">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="change_status" name="action">
-                  <button type="submit" class="btn_transparent"><i class="material-icons marg4 red-text">check</i></button>
+                    <button type="submit" class="btn_transparent"><i class="material-icons marg4 red-text">check</i></button>
                   </form>
                 </div>
                 <?php echo $res1['todo_title'] ?>
@@ -42,11 +42,14 @@ echo "<h5>Below, you may find your to-do items </h5>";
                   <form action="index.php" method="post" class="edit_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="edit" name="action">
-                  <button class="btn_transparent" type="submit"><i class="material-icons marg4">edit</i></button>
+                    <button class="btn_transparent" type="submit"><i class="material-icons marg4">edit</i></button>
                   </form>
                 </div>
               </div>
-              <div class="collapsible-body">I am collapsible</div>
+              <div class="collapsible-body">
+                <p>Due Date: <?php echo $res1['due_date'] ?></p>
+                <p>Due Date: <?php echo $res1['due_time'] ?></p>
+              </div>
             </li>
           </ul>
 

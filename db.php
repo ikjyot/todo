@@ -63,7 +63,7 @@ function createUser($first_name, $last_name, $phone, $birthday, $gender, $email,
 }
 function getTodoItems($user_id, $todo_status) {
   global $db;
-  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_status = :todo_status ORDER BY due_date DESC ";
+  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_status = :todo_status ORDER BY due_date";
   $statement = $db->prepare($query);
   $statement->bindValue(':userid', $user_id);
   $statement->bindValue(':todo_status', $todo_status);

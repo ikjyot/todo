@@ -13,6 +13,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
       global $result1, $result2;
     ?>
   <div class="todo_pagecontent">
+    <div class="pending_todo_items">
   <h5 class="center">Todo Items </h5>
     <div class="todo_container " data-role="page">
     <?php
@@ -37,9 +38,9 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
                   </form>
                 </div>
                 <div class="right">
-                  <form action="index.php" method="post" class="edit_todo_form">
+                  <form action="editTodo.php" method="post" class="edit_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
-                    <input type="hidden" value="edit" name="action">
+                    <!--<input type="hidden" value="edit" name="action">-->
                     <button class="btn_transparent edit" type="submit"><i class="material-icons marg4">edit</i></button>
                   </form>
                 </div>
@@ -50,13 +51,19 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
               </div>
             </li>
           </ul>
-
         <?php endforeach;
       } else {
         echo '<h6>You have no pending items</h6>';
       } ?>
+
+      <a href="addTodo.php"><button class="circle red btn-floating pulse right"
+              style="margin-bottom: 15px;"><i class="material-icons">add</i>
+      </button></a>
+
   <!--The Section Divider goes <here-->
-  <div class="divider"></div>
+  <div class="divider clearfix"></div>
+
+      <div class="completed_todo_items">
       <h5 class="center">Completed Items </h5>
 
   <?php

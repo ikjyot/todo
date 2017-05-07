@@ -74,22 +74,21 @@ function getTodoItems($user_id, $todo_status) {
 }
 function getTodoItem($user_id, $todo_id) {
   global $db;
-  $query = "SELECT * FROM todos WHERE user_id = :userid AND todo_id = :todo_id";
+  $query = "SELECT * FROM todos WHERE user_id = :user_id AND id = :todo_id";
   $statement = $db->prepare($query);
-  $statement->bindValue(':userid', $user_id);
+  $statement->bindValue(':user_id', $user_id);
   $statement->bindValue(':todo_id', $todo_id);
   $statement->execute();
-  $result = $statement->fetchAll();
+  $result = $statement->fetch();
   $statement->closeCursor();
   return $result;
 }
-function addTodoItem($user_id, $todo_title, $description, $due_date, $due_time) {
+function addTodoItem($user_id, $todo_title, $due_date, $due_time) {
   global $db;
-  $query = "INSERT INTO todos(user_id, todo_title, description, due_date, due_time) values (:user_id, :todo_title, :description, :due_date, :due_time)";
+  $query = "INSERT INTO todos(user_id, todo_title, due_date, due_time) values (:user_id, :todo_title, :due_date, :due_time)";
   $statement = $db->prepare($query);
   $statement->bindValue(':user_id', $user_id);
   $statement->bindValue(':todo_title', $todo_title);
-  $statement->bindValue(':description', $description);
   $statement->bindValue(':due_date', $due_date);
   $statement->bindValue(':due_time', $due_time);
   $statement->execute();

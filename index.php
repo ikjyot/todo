@@ -33,11 +33,12 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     /*}*/
   }
   else if ($action == 'add') {
-    if (isset($_POST['title']) and $_POST['title'] != '') {
-      addTodoItem($_SESSION['user_id'], $_POST['title']);
+    if (isset($_POST['todo_id']) and $_POST['todo_id'] != '') {
+      addTodoItem($_SESSION['user_id'], $_POST['todo_id'], $_POST['todo_title'], $_POST['due_date'], $_POST['due_time']);
     }
-    $result = getTodoItems($_SESSION['user_id']);
-    include('list.php');
+    $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+    $result2 = getTodoItems($_SESSION['user_id'], 'completed');
+    include 'list.php';
   }
   else if ($action == 'edit') {
     $selected = filter_input(INPUT_POST, "todo_id");
@@ -55,10 +56,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $due_time = filter_input(INPUT_POST, "edit_due_time");
     $user_id = $_SESSION['user_id'];
     updateTodo($user_id, $todo_id, $todo_title, $due_date, $due_time);
-    $_SESSION['todo_id'] = '';
-    $_SESSION['todo_title'] = '';
-    $_SESSION['due_date'] = '';
-    $_SESSION['due_time'] = '';
+
     $result1 = getTodoItems($_SESSION['user_id'], 'pending');
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';

@@ -12,6 +12,7 @@ session_start();
   <link rel="stylesheet" href="node_modules/pickadate/lib/compressed/themes/default.css">
   <link rel="stylesheet" href="node_modules/pickadate/lib/compressed/themes/default.date.css">
   <link rel="stylesheet" href="node_modules/pickadate/lib/compressed/themes/default.time.css">
+
 </head>
 <body>
   <header>

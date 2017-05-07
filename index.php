@@ -10,7 +10,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
 
   if ($action == '') {
     $result1 = getTodoItems($_SESSION['user_id'], 'pending');
-    $result2 = getTodoItems($_SESSION['user_id'], 'done');
+    $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
 
@@ -50,9 +50,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
-
 }
-
 else {
   if ($action == 'test_user') {
     $email = filter_input(INPUT_POST, 'reg_email');

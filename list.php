@@ -23,25 +23,27 @@ echo "<h5>Below, you may find your to-do items </h5>";
           <ul id="todo_list" class="collapsible todo hoverable z-depth-3">
             <li>
               <div class="collapsible-header">
-                <div class="left"><i class="material-icons green-text">check</i></div>
+                <div class="left"><i class="material-icons marg4">check</i></div>
                 <?php echo $res1['todo_title'] ?>
-                <div class="right">
+                <div class="right del">
                   <form action="index.php" method="post" class="delete_todo_form">
-                    <input type="hidden" name="item_id" value="<?php echo $res1['id'] ?>">
+                    <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="delete" name="action">
-                    <button id="delete_btn"><i class="material-icons marg4 red-text">delete</i></button>
+                    <button class="btn_transparent"><i class="material-icons marg4">delete</i></button>
                   </form>
                 </div>
-                <div class="right"><i class="material-icons">edit</i></div>
+                <div class="right edit">
+                  <form action="index.php" method="post" class="edit_todo_form">
+                    <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
+                    <input type="hidden" value="edit" name="action">
+                  <button class="btn_transparent"><i class="material-icons marg4">edit</i></button>
+                  </form>
+                </div>
               </div>
               <div class="collapsible-body">I am collapsible</div>
             </li>
           </ul>
-          <!--<form action="index.php" method="post">
-            <input type="hidden" name="item_id" value="<?php /*echo $res1['id'] */?>">
-            <input type="hidden" value="delete" name="action">
-            <button type="submit" class="waves-light waves-button-input hoverable btn">Delete</button>
-          </form>-->
+
         <?php endforeach;
       } else {
         echo '<h6>You have no pending items</h6>';

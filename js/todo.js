@@ -35,3 +35,9 @@ $(function() {
     hidden: true
   })
 });
+
+$('.del').hover(function () {
+  $(this).addClass('text-red')
+}, function () {
+  $(this).removeClass('text-red')
+});

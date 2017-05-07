@@ -14,20 +14,24 @@ session_start();
   <link rel="stylesheet" href="node_modules/pickadate/lib/compressed/themes/default.time.css">
 </head>
 <body>
-  <header class="mdl-layout__header mdl-layout__header--scroll">
+  <header>
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper red">
           <a href="index.php" style="padding-left:20px" class="brand-logo">TODO</a>
           <div class="right">
             <ul id="nav-mobile" style="padding-top: 20px; padding-right: 20px" class="right hide-on-med-and-down">
-              <?php
-              if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
-                echo '<li><a href="logout.inc.php">Logout</a></li>';
-              } else {
-                echo '<li><a href="login.php">Login</a></li>';
-              }
-              ?>
+              <ul>
+                <?php
+                if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
+                  echo '<li>', $_SESSION["name"], '</li>';
+                  echo '<li><a href="logout.inc.php">Logout</a></li>';
+                } else {
+                  echo '<li><a href="login.php">Login</a></li>';
+                }
+                ?>
+              </ul>
+
 
             </ul>
           </div>

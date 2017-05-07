@@ -23,20 +23,26 @@ echo "<h5>Below, you may find your to-do items </h5>";
           <ul id="todo_list" class="collapsible todo hoverable z-depth-3">
             <li>
               <div class="collapsible-header">
-                <div class="left"><i class="material-icons marg4">check</i></div>
+                <div class="left">
+                  <form action="index.php" method="post" class="change_status">
+                    <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
+                    <input type="hidden" value="change_todo_status" name="action">
+                  <button type="submit" class="btn_transparent"><i class="material-icons marg4">check</i></button>
+                  </form>
+                </div>
                 <?php echo $res1['todo_title'] ?>
                 <div class="right del">
                   <form action="index.php" method="post" class="delete_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="delete" name="action">
-                    <button class="btn_transparent"><i class="material-icons marg4">delete</i></button>
+                    <button type="submit" class="btn_transparent"><i class="material-icons marg4">delete</i></button>
                   </form>
                 </div>
                 <div class="right edit">
                   <form action="index.php" method="post" class="edit_todo_form">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
                     <input type="hidden" value="edit" name="action">
-                  <button class="btn_transparent"><i class="material-icons marg4">edit</i></button>
+                  <button type="submit" class="btn_transparent"><i class="material-icons marg4">edit</i></button>
                   </form>
                 </div>
               </div>

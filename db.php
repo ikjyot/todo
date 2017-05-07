@@ -105,4 +105,14 @@ function deleteTodoItem($user_id, $todo_id) {
   $statement->execute();
   $statement->closeCursor();
 }
+function changeTodoStatus($user_id, $todo_id, $todo_status){
+  global $db;
+  $query = 'UPDATE todos SET todo_status=:todo_status WHERE id = :todo_id and user_id = :user_id';
+  $statement = $db->prepare($query);
+  $statement->bindValue(':user_id', $user_id);
+  $statement->bindValue(':todo_id', $todo_id);
+  $statement->bindValue(':todo_status', $todo_status);
+  $statement->execute();
+  $statement->closeCursor();
+}
 ?>

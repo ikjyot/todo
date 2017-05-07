@@ -50,6 +50,13 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
+  elseif($action=='change_todo_status'){
+    $selected = filter_input(INPUT_POST, "todo_id");
+    changeTodoStatus($_SESSION['user_id'], $selected, 'completed');
+    $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+    $result2 = getTodoItems($_SESSION['user_id'], 'completed');
+    include 'list.php';
+  }
 }
 else {
   if ($action == 'test_user') {

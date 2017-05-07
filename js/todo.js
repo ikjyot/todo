@@ -36,11 +36,5 @@ $(function() {
   })
 });
 
-/*
-$( function() {
-  $( "#add_due_date" ).datepicker();
-});
-*/
-
 
 

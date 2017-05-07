@@ -12,9 +12,9 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     <?php
       global $result1, $result2;
     ?>
-  <div class="todo_pagecontent">
+  <div class="todo_pagecontent" style="padding-top: 20px; padding-bottom: 20px;">
     <div class="pending_todo_items">
-  <h5 class="center">Todo Items </h5>
+  <h5 class="center">TODO ITEMS </h5>
     <div class="todo_container">
     <?php
       if (!empty($result1)) {

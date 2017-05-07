@@ -26,7 +26,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
                 <div class="left">
                   <form action="index.php" method="post" class="change_status">
                     <input type="hidden" name="todo_id" value="<?php echo $res1['id'] ?>">
-                    <input type="hidden" value="change_todo_status" name="action">
+                    <input type="hidden" value="change_status" name="action">
                   <button type="submit" class="btn_transparent"><i class="material-icons marg4">check</i></button>
                   </form>
                 </div>
@@ -63,15 +63,27 @@ echo "<h5>Below, you may find your to-do items </h5>";
     foreach ($result2 as $res2):?>
       <ul id="complete_todo_list" class="collapsible todo hoverable z-depth-3">
         <li>
-          <div class="collapsible-header completed"><?php echo $res2['todo_title'] ?><div class="right"><i class="material-icons marg4">delete</i></div></div>
+          <div class="collapsible-header completed">
+            <div class="left">
+              <form action="index.php" method="post" class="change_status">
+                <input type="hidden" name="todo_id" value="<?php echo $res2['id'] ?>">
+                <input type="hidden" value="change_status" name="action">
+                <button type="submit" class="btn_transparent"><i class="material-icons marg4 green-text">check</i></button>
+              </form>
+            </div>
+            <?php echo $res2['todo_title'] ?>
+            <div class="right del">
+              <form action="index.php" method="post" class="delete_todo_form">
+                <input type="hidden" name="todo_id" value="<?php echo $res2['id'] ?>">
+                <input type="hidden" value="delete" name="action">
+                <button type="submit" class="btn_transparent"><i class="material-icons marg4">delete</i></button>
+              </form>
+            </div>
+          </div>
           <div class="collapsible-body">I am collapsible</div>
         </li>
       </ul>
-      <form action="index.php" method="post">
-        <input type="hidden" name="item_id" value="<?php echo $res2['id'] ?>">
-        <input type="hidden" value="delete" name="action">
-        <button type="submit" class="waves-light waves-button-input hoverable btn">Delete</button>
-      </form>
+
     <?php endforeach;
   } else {
     echo '<h6>You have no completed items</h6>';

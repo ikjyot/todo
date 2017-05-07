@@ -115,4 +115,15 @@ function changeTodoStatus($user_id, $todo_id, $todo_status){
   $statement->execute();
   $statement->closeCursor();
 }
+function getCurrentStatus($user_id, $todo_id){
+  global $db;
+  $query = 'SELECT * FROM todos WHERE id = :todo_id and user_id = :user_id';
+  $statement = $db->prepare($query);
+  $statement->bindValue(':user_id', $user_id);
+  $statement->bindValue(':todo_id', $todo_id);
+  $statement->execute();
+  $result = $statement->fetch();
+  $statement->closeCursor();
+  return $result['todo_status'];
+}
 ?>

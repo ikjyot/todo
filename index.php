@@ -50,9 +50,15 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
-  elseif($action=='change_todo_status'){
+
+  elseif($action == 'change_status'){
     $selected = filter_input(INPUT_POST, "todo_id");
-    changeTodoStatus($_SESSION['user_id'], $selected, 'completed');
+    $current_status = getCurrentStatus($_SESSION['user_id'], $selected);
+    if ($current_status == 'pending'){
+      changeTodoStatus($_SESSION['user_id'], $selected, 'completed');
+    } else {
+      changeTodoStatus($_SESSION['user_id'], $selected, 'pending');
+    }
     $result1 = getTodoItems($_SESSION['user_id'], 'pending');
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';

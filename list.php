@@ -14,21 +14,34 @@ echo "<h5>Below, you may find your to-do items </h5>";
     <?php
       global $result1, $result2;
     ?>
-    <strong>ToDo Items</strong>
+
+    <div class="todo_container">
+      <strong>ToDo Items</strong>
     <?php
       if (!empty($result1)) {
         foreach ($result1 as $res1):?>
-          <ul id="todo" class="collapsible popout">
+          <ul id="todo_list" class="collapsible todo hoverable z-depth-3">
             <li>
-              <div class="collapsible-header"><?php echo $res1['todo_title'] ?></div>
+              <div class="collapsible-header">
+                <div class="left"><i class="material-icons green-text">check</i></div>
+                <?php echo $res1['todo_title'] ?>
+                <div class="right">
+                  <form action="index.php" method="post" class="delete_todo_form">
+                    <input type="hidden" name="item_id" value="<?php echo $res1['id'] ?>">
+                    <input type="hidden" value="delete" name="action">
+                    <button id="delete_btn"><i class="material-icons marg4 red-text">delete</i></button>
+                  </form>
+                </div>
+                <div class="right"><i class="material-icons">edit</i></div>
+              </div>
               <div class="collapsible-body">I am collapsible</div>
             </li>
           </ul>
-          <form action="index.php" method="post">
-            <input type="hidden" name="item_id" value="<?php echo $res1['id'] ?>">
+          <!--<form action="index.php" method="post">
+            <input type="hidden" name="item_id" value="<?php /*echo $res1['id'] */?>">
             <input type="hidden" value="delete" name="action">
             <button type="submit" class="waves-light waves-button-input hoverable btn">Delete</button>
-          </form>
+          </form>-->
         <?php endforeach;
       } else {
         echo '<h6>You have no pending items</h6>';
@@ -40,9 +53,9 @@ echo "<h5>Below, you may find your to-do items </h5>";
   <?php
   if (!empty($result2)) {
     foreach ($result2 as $res2):?>
-      <ul id="todo" class="collapsible popout">
+      <ul id="complete_todo_list" class="collapsible todo hoverable z-depth-3">
         <li>
-          <div class="collapsible-header"><?php echo $res2['todo_title'] ?></div>
+          <div class="collapsible-header completed"><?php echo $res2['todo_title'] ?><div class="right"><i class="material-icons marg4">delete</i></div></div>
           <div class="collapsible-body">I am collapsible</div>
         </li>
       </ul>
@@ -55,7 +68,7 @@ echo "<h5>Below, you may find your to-do items </h5>";
   } else {
     echo '<h6>You have no completed items</h6>';
   } ?>
-
+    </div>
 <?php
 } else {
   header("Location: index.php");

@@ -79,7 +79,7 @@ function getTodoItem($user_id, $todo_id) {
   $statement->bindValue(':userid', $user_id);
   $statement->bindValue(':todo_id', $todo_id);
   $statement->execute();
-  $result = $statement->fetch();
+  $result = $statement->fetchAll();
   $statement->closeCursor();
   return $result;
 }

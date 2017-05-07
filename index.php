@@ -42,7 +42,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $result2 = getTodoItems($_SESSION['user_id'], 'completed');
     include 'list.php';
   }
-  else if ($action == 'edit') {
+  /*else if ($action == 'edit') {
     $selected = filter_input(INPUT_POST, "todo_id");
     $result = getTodoItem($_SESSION['user_id'], $selected);
     $_SESSION['todo_id'] = $selected;
@@ -50,18 +50,21 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
     $_SESSION['due_date'] = $result['due_date'];
     $_SESSION['due_time'] = $result['due_time'];
     header("Location: editTodo.php");
-  }
+  }*/
   else if ($action == 'update_todo_item') {
     $todo_id = filter_input(INPUT_POST, "todo_id");
     $todo_title = filter_input(INPUT_POST, "edit_todo_title");
     $due_date = filter_input(INPUT_POST, "edit_due_date");
     $due_time = filter_input(INPUT_POST, "edit_due_time");
     $user_id = $_SESSION['user_id'];
-    updateTodo($user_id, $todo_id, $todo_title, $due_date, $due_time);
-
-    $result1 = getTodoItems($_SESSION['user_id'], 'pending');
-    $result2 = getTodoItems($_SESSION['user_id'], 'completed');
-    include 'list.php';
+    $res = updateTodo($user_id, $todo_id, $todo_title, $due_date, $due_time);
+    if ($res) {
+      $result1 = getTodoItems($_SESSION['user_id'], 'pending');
+      $result2 = getTodoItems($_SESSION['user_id'], 'completed');
+      include 'list.php';
+    } else {
+      header("Location: index.php");
+    }
   }
   else if ($action == 'delete') {
     $action = '';

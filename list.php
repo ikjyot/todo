@@ -15,7 +15,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
   <div class="todo_pagecontent">
     <div class="pending_todo_items">
   <h5 class="center">Todo Items </h5>
-    <div class="todo_container " data-role="page">
+    <div class="todo_container">
     <?php
       if (!empty($result1)) {
         foreach ($result1 as $res1):?>
@@ -53,7 +53,7 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
           </ul>
         <?php endforeach;
       } else {
-        echo '<h6>You have no pending items</h6>';
+        echo '<h6 class="center grey-text">You have no pending items</h6>';
       } ?>
 
       <a href="addTodo.php"><button class="circle red btn-floating pulse right"
@@ -88,13 +88,16 @@ if (isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
               </form>
             </div>
           </div>
-          <div class="collapsible-body">I am collapsible</div>
+          <div class="collapsible-body">
+            <p>Due Date: <?php echo $res2['due_date'] ?></p>
+            <p>Due Date: <?php echo $res2['due_time'] ?></p>
+          </div>
         </li>
       </ul>
 
     <?php endforeach;
   } else {
-    echo '<h6>You have no completed items</h6>';
+    echo '<h6 class="center grey-text">You have no completed items</h6>';
   } ?>
     </div>
   </div>

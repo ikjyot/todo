@@ -127,7 +127,7 @@ function getCurrentStatus($user_id, $todo_id){
 }
 function updateTodo($user_id, $todo_id, $todo_title, $due_date, $due_time) {
   global $db;
-  $query = "UPDATE todos SET todo_title=:todo_title AND due_date = :due_date AND due_time=:due_time WHERE user_id=:user_id AND id=:todo_id";
+  $query = "UPDATE todos SET todo_title=:todo_title, due_date = :due_date, due_time=:due_time WHERE user_id=:user_id AND id=:todo_id";
   $statement = $db->prepare($query);
   $statement->bindValue(':user_id', $user_id);
   $statement->bindValue(':todo_id', $todo_id);

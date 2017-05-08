@@ -36,5 +36,21 @@ $(function() {
   })
 });
 
-
+$(document).ready(function() {
+  $("form#login_center_form").submit(function() {
+    var formDetails = $('#login_center_form');
+    $.ajax({
+      type: "POST",
+      url: 'index.php',
+      data: formDetails.serialize(),
+      success: function (data) {
+        $('#validate_login_check').empty().html(data);
+      },
+      error: function(jqXHR, text, error){
+        $('#validate_login_check').html(error);
+      }
+    });
+    return false;
+  });
+});
 

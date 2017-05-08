@@ -1,11 +1,10 @@
 <?php
 include "header.inc.php";
 if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
-  echo "Email Already Exists, Choose something else <br />";
 ?>
-
-<form action="register.php">
-  <button type="submit">Go back</button>
+<h2>Email Already exists</h2>
+<form action="register.php" method="post" class="center">
+  <button class="btn waves-effect waves-light red" type="submit">Go back</button>
 </form>
 <?php
 } else {

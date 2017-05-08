@@ -41,5 +41,5 @@ session_start();
     </div>
   </header>
 
-  <main>
+  <main class="valign-wrapper">
     <div class="page-content">

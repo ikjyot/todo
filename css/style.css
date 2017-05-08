@@ -16,17 +16,12 @@ body {
     flex-direction: column;
 }
 
-.login_center{
-    position: relative;
-    vertical-align: middle;
-}
 .page-content{
     padding: 5px;
     font-size: 16px;
 }
 .page-content #login_center{
     padding: 15px;
-    margin-top: 150px;
     border: 2px solid whitesmoke;
 }
 .page-content .register_section{
@@ -37,16 +32,13 @@ body {
     border: 2px solid whitesmoke;
     width: 400px;
     height: 640px;
-    margin-top: 45px;
 }
 .page-content #edit_todo{
     padding: 15px;
-    margin-top: 150px;
     border: 2px solid whitesmoke;
 }
 .page-content #add_todo{
     padding: 15px;
-    margin-top: 150px;
     border: 2px solid whitesmoke;
     width: 350px;
 }

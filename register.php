@@ -43,7 +43,7 @@ if (!isset($_SESSION['name'], $_SESSION['user_id'], $_SESSION['isLogged'])) {
       <div class="signup_btn_div">
         <button type="submit" class="waves-effect waves-light btn hoverable red">
           Sign Up
-        </button> &nbsp; &nbsp; <span style="color: grey">Already Registered?</span> <a href="login.php"><span class="hoverable" style="color: #f44336; ">Login</span></a>
+        </button> &nbsp; &nbsp; <span style="color: grey">Already Registered?</span> <a href="login.php"><span style="color: #f44336; ">Login</span></a>
       </div>
     </form>
   </div>

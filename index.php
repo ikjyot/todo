@@ -78,9 +78,9 @@ else {
       $result2 = getTodoItems($_SESSION['user_id'], 'completed');
       include 'list.php';
     } elseif ($valid_user === 'Email Exists') {
-      echo '<h2>Email Exists, Incorrect password</h2>';
+      echo '<h6 class="center red-text">Email Exists, Incorrect password</h6>';
     } elseif ($valid_user === 'Email Does Not Exist') {
-      echo '<h2>Account Does Not Exist, ', '<a href="register.php">Register</a></h2>';
+      echo '<h6 class="center red-text">User does not exist, Sign up</h6>';
     }
   }
   else if ($action == 'registrar') {

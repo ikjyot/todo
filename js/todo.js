@@ -44,7 +44,11 @@ $(document).ready(function() {
       url: 'index.php',
       data: formDetails.serialize(),
       success: function (data) {
-        $('#validate_login_check').empty().html(data);
+        if(data.length < 100){
+          $('#validate_login_check').empty().html(data);
+        } else {
+          window.location.replace('http://web.njit.edu/~isg6/todo/index.php');
+        }
       },
       error: function(jqXHR, text, error){
         $('#validate_login_check').html(error);
